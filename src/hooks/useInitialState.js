@@ -1,33 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // dummy data
 import initialState from '../initialState';
-import getData from '../utils';
+import fetchData from './useFetchData';
 
 const useInitialState = () => {
   const [state, setState] = useState(initialState);
 
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const API =
-      'https://5d8cdb5a443e3400143b4bea.mockapi.io/corebizchile/products';
-    const data = getData(API);
-
-    setProducts(data);
-  }, []);
+  const { loading, products, error } = fetchData();
 
   const addToCart = (payload) => {
     setState({
       ...state,
-      cart: [...state.cart, payload],
+      shoppingCart: [...state.shoppingCart, payload],
     });
   };
 
   const removeFromCart = (payload) => {
     setState({
       ...state,
-      cart: state.cart.filter((items) => items.id !== payload.id),
+      shoppingCart: state.cart.filter((items) => items.id !== payload.id),
     });
   };
 
@@ -36,6 +28,8 @@ const useInitialState = () => {
     removeFromCart,
     state,
     products,
+    loading,
+    error,
   };
 };
 
