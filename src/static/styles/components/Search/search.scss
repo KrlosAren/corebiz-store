@@ -1,0 +1,19 @@
+.search {
+  align-items: center;
+  display: flex;
+  font-size: 1.6em;
+  grid-column: 4/-4;
+  height: 100%;
+  justify-content: center;
+}
+
+.input-search {
+  border-bottom: 1px solid #cdd0cb;
+  display: flex;
+  width: 100%;
+
+  input[type='text'] {
+    border: transparent;
+    width: 100%;
+  }
+}

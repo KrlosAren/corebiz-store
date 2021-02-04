@@ -1,0 +1,15 @@
+.carousel {
+  grid-column: 1/-1;
+  overflow: hidden;
+  padding-left: 30px;
+  position: relative;
+  width: 100%;
+}
+
+.carousel__container {
+  display: flex;
+  margin: 70px auto;
+  overflow-x: scroll;
+  padding-bottom: 2em;
+  width: 100%;
+}
