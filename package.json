@@ -1,18 +1,23 @@
 {
-  "name": "platzi-conf-merch",
+  "name": "corebiz",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack serve --config webpack.config.js --mode development",
-    "build:prod": "webpack --config webpack.config.js --mode production"
+    "build:prod": "webpack --config webpack.config.js --mode production",
+    "format": "prettier --write \"{*.js,src/**/*.{js,jsx}}\"",
+    "lint": "eslint src/ --fix",
+    "style:format": "npx stylelint **/*.s[ac]ss"
   },
   "keywords": [],
   "author": "Carlos Lopez Z <krlosaren@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -30,12 +35,25 @@
     "eslint-plugin-react": "^7.22.0",
     "html-loader": "^1.3.2",
     "html-webpack-plugin": "^4.5.1",
+    "husky": "^4.3.8",
     "mini-css-extract-plugin": "^1.3.3",
     "node-sass": "^5.0.0",
     "prettier": "^2.2.1",
+    "sass": "^1.32.6",
     "sass-loader": "^10.1.1",
+    "stylelint": "^13.9.0",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
     "webpack": "^5.13.0",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint && npm run style:format",
+      "pre-push": "",
+      "...": "..."
+    }
   }
 }
